@@ -3,6 +3,7 @@ A collection of my machine learning implementations
 
 
 # How to use the library MyRegressionModel
+Note that numpy is required.
 Currently 2 modes of logistic regression are implemented, normalized and unnormalized.
 Normalized just converts each feature to a comparable range by subtracting mean and dividing by standard deviation for each feature.
 to use the normalized version, set the variable Normalized to True so future testcases also get modified correctly.
