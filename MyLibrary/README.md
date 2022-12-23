@@ -4,3 +4,6 @@ https://nbviewer.org/github/DhruvAhlawat/Machine-Learning/blob/main/MyLibrary/My
 # How to use
 Comments are provided for all the functions and an example case is provided to show the steps to use the library.
 performs quick Logistic regression and can be has functions to implement higher degree logistic regression with regularization and normalization.
+
+# Requirements
+Requires numpy, pandas and matplotlib to be installed.
