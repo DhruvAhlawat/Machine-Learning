@@ -45,6 +45,7 @@ def initializeCentroids(X,K):
 
     return centroids;
 
+'''Runs the algorithm once'''
 def runKmeansAlgorithm(X, initial_centroids, total_iterations = 10):
     m,n = X.shape;
     K = initial_centroids.shape[0]; #the initial_centroids would be calculated randomly and multiple times to get the optimal case
@@ -58,5 +59,28 @@ def runKmeansAlgorithm(X, initial_centroids, total_iterations = 10):
         indices = nearestCentroid(X,centroids); #resetting the indices to their nearest centroids
         centroids = recomputeCentroids(X,indices,K); #resetting the centroids to the respective mean positions
     return centroids,indices;
+
+'''tries out multiple different starting conditions to get the optimal case'''
+def MultipleRandomStarts(X, K,trials = 10,total_iterations = 10,initial_centroids = None):
+    
+    currentLowestCentroids = (0,0); 
+    curLowestCost = -1;  
+
+    for i in range(trials):
+        #for each such trial, we will compute the 
+        initial_centroids = initializeCentroids(X,K);
+        centroids,indices =  runKmeansAlgorithm(X,initial_centroids,total_iterations); 
+        #now we shall calculate the cost
+        if(curLowestCost == -1):
+            currentLowestCentroids = (centroids,indices);
+        else:
+            currentCost = 0; 
+            for i in X:
+                currentCost += np.linalg.norm(X[i] - centroids[indices[i]]); #computes the norm with the nearest centroid
+            if(currentCost < curLowestCost):
+                currentLowestCentroids = (centroids,indices); 
+                curLowestCost = currentCost; 
+    
+    return currentLowestCentroids[0], currentLowestCentroids[1];
 
     
