@@ -26,14 +26,14 @@ def nearestCentroid(X,centroids):
 
 '''Places the Centroids at the mean position of their group'''
 def recomputeCentroids(X, indices, K):
-    centroids = np.zeros((K,X.shape[1]),dtype=int); 
+    centroids = np.zeros((K,X.shape[1])); 
     for i in range(K):
         group = X[indices == i];
         if(len(group) != 0):
             centroids[i] = np.mean(group,axis=0); 
-        else:
-            #randomly place this node somewhere
-            centroids[i] = 
+        # else:
+        #     #randomly place this node somewhere
+        #     centroids[i] = centroids[i]; 
 
     
     return centroids; 
